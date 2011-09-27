@@ -1,0 +1,12 @@
+820034339f077c324fbeb087e953385c *DESCRIPTION
+5b3444dcdfd2fc4a2ce8d328cd0a33f2 *R/tegarch.est.R
+731979dfcd759a4a0275cbf1e35921c2 *R/tegarch.fit.R
+9ab22a5557a55c1fee48fc958743c9cb *R/tegarch.logl.R
+6e9bd547d9362a03817e87d634d9f22f *R/tegarch.recursion.R
+9480a15317b54e9fb7b88ea8da86ae9e *R/tegarch.sim.R
+f71fdb86ee2edcca8ec020d23470f1cf *man/betategarch-package.Rd
+eb6cdf02207d26bb818d813afdf6e4dc *man/tegarch.est.Rd
+ebbaa9545b1b727f0b5cfbc79a479b82 *man/tegarch.fit.Rd
+da39ea1c6430607191d61cba9642b23f *man/tegarch.logl.Rd
+319c5ad85c865c6b9e49398d3202c6cf *man/tegarch.recursion.Rd
+b90f9b46e15a0f88c2e72fe6d4bacd96 *man/tegarch.sim.Rd
