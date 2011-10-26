@@ -1,7 +1,7 @@
 tegarch.logl <-
 function(y, delta=0, phi1=0.8, kappa1=0.1,
   kappa1star=0.01, df=10, lower=c(-Inf,-0.999999999,-Inf,-Inf,2.1),
-  upper=c(Inf,0.999999999,Inf,Inf,Inf), lambda.initial=NULL, c.code=FALSE,
+  upper=c(Inf,0.999999999,Inf,Inf,Inf), lambda.initial=NULL, c.code=TRUE,
   na.replace=rep(NA,5))
 {
 if(is.na(delta)) delta <- na.replace[1]
@@ -33,6 +33,7 @@ term1 <- lambda1
 term2 <- (df+1)*log(1 + (y2/denom.term))/2
 
 logl <- iN*const1 - sum(term1) - sum(term2)
+if(is.na(logl) || abs(logl) == Inf) logl <- -10e+100
 return(logl)
 }
 

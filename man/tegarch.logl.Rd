@@ -7,7 +7,9 @@ Log-likelihood function
 Provides the value of the log-likelihood. Auxiliary function used by tegarch.est in the estimation of the Beta-t-EGARCH model.
 }
 \usage{
-tegarch.logl(y, delta = 0, phi1 = 0.8, kappa1 = 0.1, kappa1star = 0.01, df = 10, lower = c(-Inf, -0.999999999, -Inf, -Inf, 2.1), upper = c(Inf, 0.999999999, Inf, Inf, Inf), lambda.initial = NULL, c.code = FALSE, na.replace = rep(NA,5))
+tegarch.logl(y, delta = 0, phi1 = 0.8, kappa1 = 0.1, kappa1star = 0.01, df = 10,
+  lower = c(-Inf, -0.999999999, -Inf, -Inf, 2.1), upper = c(Inf, 0.999999999, Inf, Inf, Inf),
+  lambda.initial = NULL, c.code = TRUE, na.replace = rep(NA, 5) )
 }
 \arguments{
   \item{y}{
@@ -38,7 +40,8 @@ numeric five-dimensional vector with the upper bounds of the estimated parameter
 initial value of the recursion for lambda or log-volatility. Default: delta/(1-phi1)
 }
   \item{c.code}{
-logical, TRUE (not implemented yet) or FALSE (default). Until implemented (hopefully sometime in the near future), TRUE will return an error message
+logical, TRUE (default) or FALSE. TRUE is faster since it makes use of compiled C-code
+
 }
   \item{na.replace}{
 numeric five-dimensional vector. Sometimes estimation can result in NA values which is fatal for simulations. One way of avoiding this is to replace NAs with user-provided values.

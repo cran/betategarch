@@ -8,7 +8,8 @@ Recursion of the Beta-t-EGARCH
 To compute the log-likelihood a recursion is needed in order to generate the lambda series. This function does this
 }
 \usage{
-tegarch.recursion(y, delta = 0.01, phi1 = 0.95, kappa1 = 0.05, kappa1star = 0, df = 10, lambda.initial = NULL, c.code = FALSE, verbose = FALSE)
+tegarch.recursion(y, delta = 0.01, phi1 = 0.95, kappa1 = 0.05, kappa1star = 0, df = 10,
+  lambda.initial = NULL, c.code = TRUE, verbose = FALSE)
 }
 \arguments{
   \item{y}{
@@ -33,7 +34,7 @@ numeric, the value of df
 numeric, the initial value of the recursion for lambda or log-volatility. Default: delta/(1-phi1)
 }
   \item{c.code}{
-logical, TRUE (not implemented yet) or FALSE (default). Until implemented (hopefully sometime in the near future), TRUE will return an error message.
+logical, TRUE (default) or FALSE. TRUE is faster since it makes use of compiled C-code
 }
   \item{verbose}{
 logical, TRUE or FALSE (default). If FALSE then only the lambda series in the form of a numeric vector is returned. If TRUE then a five-column matrix with y, sigma, lambda, u and epsilon is returned.

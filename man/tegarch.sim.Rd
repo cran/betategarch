@@ -8,7 +8,8 @@ Simulate from a 1st. order Beta-t-EGARCH model
 Generate the y series from a 1st. order Beta-t-EGARCH model and, optionally, the sigma, lambda, u and epsilon.
 }
 \usage{
-tegarch.sim(n, delta = 0, phi1 = 0.95, kappa1 = 0.05, kappa1star = 0, df = 10, lambda.initial = NULL, verbose = FALSE)
+tegarch.sim(n, delta = 0, phi1 = 0.95, kappa1 = 0.05, kappa1star = 0, df = 10,
+  lambda.initial = NULL, verbose = FALSE)
 }
 
 \arguments{

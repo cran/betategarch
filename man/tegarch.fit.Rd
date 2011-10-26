@@ -8,7 +8,7 @@ Compute the fitted values
 Returns the fitted values of sigma, lambda, u and epsilon. Essentially a wrapper to the tegarch.recursion function.
 }
 \usage{
-tegarch.fit(y, par, lambda.initial = NULL, c.code = FALSE)
+tegarch.fit(y, par, lambda.initial = NULL, c.code = TRUE)
 }
 \arguments{
   \item{y}{
@@ -21,7 +21,7 @@ numeric five-dimensional vector with the estimates of delta, phi1, kappa1, kappa
 initial value of the recursion for lambda or log-volatility. Default: delta/(1-phi1)
 }
   \item{c.code}{
-logical, TRUE (not implemented yet) or FALSE (default). Until implemented (hopefully sometime in the near future), TRUE will return an error message.
+logical, TRUE (default) or FALSE. TRUE is faster since it makes use of compiled C-code
 }
 }
 \details{

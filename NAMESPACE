@@ -1,0 +1,5 @@
+
+useDynLib(betategarch)
+
+export("tegarch.sim", "tegarch.recursion", "tegarch.logl", "tegarch.est", "tegarch.fit", ".tegarch.recursion")
+	

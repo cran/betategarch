@@ -1,6 +1,6 @@
 tegarch.recursion <-
 function(y, delta=0.01, phi1=0.95, kappa1=0.05,
-  kappa1star=0, df=10, lambda.initial=NULL, c.code=FALSE, verbose=FALSE)
+  kappa1star=0, df=10, lambda.initial=NULL, c.code=TRUE, verbose=FALSE)
 {
 y2 <- y^2
 kappa1starsignnegy <- kappa1star*sign(-y)

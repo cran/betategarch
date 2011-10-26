@@ -2,7 +2,7 @@ tegarch.est <-
 function(y, initial.values=c(0.001,0.9,0.02,0.01,10),
   lower=c(-Inf,-0.999999999,-Inf,-Inf,2.000001),
   upper=c(+Inf,0.999999999,Inf,Inf,Inf), lambda.initial=NULL,
-  compute.hessian=TRUE, c.code=FALSE, na.replace=NA, verbose=TRUE, ...)
+  compute.hessian=TRUE, c.code=TRUE, na.replace=NA, verbose=TRUE, ...)
 {
   objective.f <- function(p, x=y, logl.scale=-1){
     f <- logl.scale*tegarch.logl(x, p[1],p[2],p[3],p[4],p[5], lower=lower,
