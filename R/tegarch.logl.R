@@ -36,4 +36,3 @@ logl <- iN*const1 - sum(term1) - sum(term2)
 if(is.na(logl) || abs(logl) == Inf) logl <- -10e+100
 return(logl)
 }
-

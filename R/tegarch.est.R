@@ -14,14 +14,7 @@ function(y, initial.values=c(0.001,0.9,0.02,0.01,10),
 
   if(compute.hessian){
     fn1 <- function(initial.values) objective.f(initial.values, logl.scale=-1)
-    con <- list(trace = 0, fnscale = 1, parscale = rep.int(1,
-      length(initial.values)), ndeps = rep.int(0.001, length(initial.values)),
-      maxit = 100L, abstol = -Inf, reltol = sqrt(.Machine$double.eps),
-      alpha = 1, beta = 0.5, gamma = 2, REPORT = 10, type = 1, lmm = 5,
-      factr = 1e+07, pgtol = 0, tmax = 10, temp = 10)
-    hess <- .Internal(optimhess(est$par, fn1, NULL, con))
-    est$hessian.numerical <- 0.5 * (hess + t(hess))
-    est$hessian.numerical <- -est$hessian.numerical
+    est$hessian.numerical <- -optimHess(est$par, fn1)
   }
 
 if(verbose){
@@ -30,4 +23,3 @@ if(verbose){
 
 return(est)
 }
-

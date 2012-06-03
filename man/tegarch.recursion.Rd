@@ -8,8 +8,8 @@ Recursion of the Beta-t-EGARCH
 To compute the log-likelihood a recursion is needed in order to generate the lambda series. This function does this
 }
 \usage{
-tegarch.recursion(y, delta = 0.01, phi1 = 0.95, kappa1 = 0.05, kappa1star = 0, df = 10,
-  lambda.initial = NULL, c.code = TRUE, verbose = FALSE)
+tegarch.recursion(y, delta = 0.01, phi1 = 0.95, kappa1 = 0.05, kappa1star = 0,
+  df = 10, lambda.initial = NULL, c.code = TRUE, verbose = FALSE)
 }
 \arguments{
   \item{y}{
@@ -40,18 +40,16 @@ logical, TRUE (default) or FALSE. TRUE is faster since it makes use of compiled 
 logical, TRUE or FALSE (default). If FALSE then only the lambda series in the form of a numeric vector is returned. If TRUE then a five-column matrix with y, sigma, lambda, u and epsilon is returned.
 }
 }
-\details{
-}
+\details{Empty}
+
 \value{
 A numeric vector containing the lambda values if verbose=FALSE (default), and a five-column matrix if verbose=TRUE.
 }
-\references{
-}
-\author{
-Genaro Sucarrat, http://www.sucarrat.net/
-}
-\note{
-}
+\references{Harvey, A. and Chakravarty, T (2008), 'Beta-t-(E)GARCH', Cambridge Working Papers in Economics 0840, Faculty of Economics, University of Cambridge.}
+
+\author{Genaro Sucarrat, http://www.sucarrat.net/}
+
+\note{Empty}
 
 \seealso{
 tegarch.fit
@@ -62,11 +60,13 @@ set.seed(123)
 x <- tegarch.sim(500, delta=0.01, phi1=0.9, kappa1=0.1, kappa1star=0.05, df=10)
 
 ##values of lambda (log-volatility):
-xfit <- tegarch.recursion(x, delta=0.01, phi1=0.9, kappa1=0.1, kappa1star=0.05, df=10)
+xfit <- tegarch.recursion(x, delta=0.01, phi1=0.9, kappa1=0.1, kappa1star=0.05,
+  df=10)
 
 ##values of y, sigma (volatility), lambda (log-volatility), u and epsilon:
-xfitmore <- tegarch.recursion(x, verbose=TRUE, delta=0.01, phi1=0.9, kappa1=0.1, kappa1star=0.05, df=10)
+xfitmore <- tegarch.recursion(x, verbose=TRUE, delta=0.01, phi1=0.9, kappa1=0.1,
+  kappa1star=0.05, df=10)
 
 }
 
-\keyword{}
+\keyword{Statistical Models}

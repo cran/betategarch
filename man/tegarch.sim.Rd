@@ -38,31 +38,31 @@ numeric, the initial value of the recursion for lambda or log-volatility. Defaul
 logical, TRUE or FALSE (default). If TRUE then a five-column matrix with n rows containing y, sigma, lambd, u and epsilon is returned. If FALSE then only y is returned.
 }
 }
-\details{
-}
+\details{Empty}
+
 \value{
 A numeric vector of length n or a five-column matrix with n rows, depending on the value of verbose.
 }
-\references{
-}
-\author{
-Genaro Sucarrat, http://www.sucarrat.net/
-}
-\note{
-}
+\references{Harvey, A. and Chakravarty, T (2008), 'Beta-t-(E)GARCH', Cambridge Working Papers in Economics 0840, Faculty of Economics, University of Cambridge.}
+
+\author{Genaro Sucarrat, http://www.sucarrat.net/}
+
+\note{Empty}
 
 
-\seealso{
-}
+\seealso{tegarch.est}
+
 \examples{
 ##simulate series with 500 observations:
 set.seed(123)
 x <- tegarch.sim(500, delta=0.01, phi1=0.9, kappa1=0.1, kappa1star=0.05, df=10)
 
-##simulate the same series, but with more output (volatility, log-volatility or lambda, u and epsilon)
+##simulate the same series, but with more output (volatility, log-volatility or
+##lambda, u and epsilon)
 set.seed(123)
-y <- tegarch.sim(500, delta=0.01, phi1=0.9, kappa1=0.1, kappa1star=0.05, df=10, verbose=TRUE)
+y <- tegarch.sim(500, delta=0.01, phi1=0.9, kappa1=0.1, kappa1star=0.05, df=10,
+  verbose=TRUE)
 
 }
 
-\keyword{}
+\keyword{Statistical Models}

@@ -31,5 +31,4 @@ function(n, delta=0, phi1=0.95, kappa1=0.05,
     result <- sigma*epsilon
   }
   return(result)
-} #end tegarch.sim
-
+}

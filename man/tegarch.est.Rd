@@ -8,8 +8,9 @@ Estimates a 1st. order Beta-t-EGARCH model
 Provides Maximum Likelihood (ML) estimation of a 1s.t order Beta-t-EGARCH model and computes (optionally) the Hessian. EGARCH is short for Exponential Generalised Autoregressive Heteroscedasticity, a label that is often associated with Nelson's (1991) model. A shortcoming with Nelson's model is that the unconditional moments do not exist in general when the conditional density is t distributed. This is the major motivation behind Andrew Harvey's Beta-t-EGARCH model, which is an exponential GARCH model with leverage and t distributed conditional errors.
 }
 \usage{
-tegarch.est(y, initial.values = c(0.001, 0.9, 0.02, 0.01, 10), lower = c(-Inf, -0.999999999, -Inf, -Inf, 2.000001),
-  upper = c(+Inf, 0.999999999, Inf, Inf, Inf), lambda.initial = NULL, compute.hessian = TRUE, c.code = TRUE,
+tegarch.est(y, initial.values = c(0.001, 0.9, 0.02, 0.01, 10), lower = c(-Inf,
+  -0.999999999, -Inf, -Inf, 2.000001), upper = c(+Inf, 0.999999999, Inf, Inf,
+  Inf), lambda.initial = NULL, compute.hessian = TRUE, c.code = TRUE,
   na.replace = NA, verbose = TRUE, ...)
 }
 \arguments{
@@ -38,7 +39,7 @@ logical, TRUE (default) or FALSE. TRUE is faster since it makes use of compiled 
 numeric five-dimensional vector. Sometimes estimation can result in NA values which is fatal for simulations. One way of avoiding this is to replace NAs with user-provided values (the values are sent to the log-likelihood function tegarch.logl).
 }
   \item{verbose}{
-logical TRUE (default) or FALSE. FALSE provides marginally faster estimation.
+logical, TRUE (default) or FALSE. FALSE provides marginally faster estimation.
 }
   \item{\dots}{
 further arguments passed to the nlminb.
@@ -67,19 +68,14 @@ Returns a list with the following elements:
   \item{evaluations}{Number of objective function and gradient function evaluations, see the documentation of nlminb}
   \item{message}{A character string giving any additional information returned by the optimizer, or NULL. For details, see PORT documentation and the documentation of nlminb}
 }
-\references{
-Harvey, A. and Chakravarty, T (2008), 'Beta-t-(E)GARCH', Cambridge Working Papers in Economics 0840, Faculty of Economics, University of Cambridge.
-Nelson, Daniel B. (1991): 'Conditional Heteroskedasticity in Asset Returns: A New Approach', Econometrica 59, pp. 347-370
-}
-\author{
-Genaro Sucarrat (http://www.sucarrat.net/)
-}
-\note{
-}
+\references{Harvey, A. and Chakravarty, T (2008), 'Beta-t-(E)GARCH', Cambridge Working Papers in Economics 0840, Faculty of Economics, University of Cambridge. Nelson, Daniel B. (1991): 'Conditional Heteroskedasticity in Asset Returns: A New Approach', Econometrica 59, pp. 347-370}
 
-\seealso{
-tegarch.recursion, tegarch.logl
-}
+\author{Genaro Sucarrat (http://www.sucarrat.net/)}
+
+\note{Empty}
+
+\seealso{tegarch.recursion, tegarch.logl}
+
 \examples{
 ##simulate series with 500 observations:
 set.seed(123)
@@ -95,4 +91,4 @@ tegarch.est(x, compute.hessian=FALSE) #Do not compute Hessian; speeds up estimat
 tegarch.est(x, lower=c(-1, 0.7, -1, -1, 4.1))
 
 }
-\keyword{}
+\keyword{Statistical Models}

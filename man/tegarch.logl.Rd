@@ -8,8 +8,8 @@ Provides the value of the log-likelihood. Auxiliary function used by tegarch.est
 }
 \usage{
 tegarch.logl(y, delta = 0, phi1 = 0.8, kappa1 = 0.1, kappa1star = 0.01, df = 10,
-  lower = c(-Inf, -0.999999999, -Inf, -Inf, 2.1), upper = c(Inf, 0.999999999, Inf, Inf, Inf),
-  lambda.initial = NULL, c.code = TRUE, na.replace = rep(NA, 5) )
+  lower = c(-Inf, -0.999999999, -Inf, -Inf, 2.1), upper = c(Inf, 0.999999999,
+  Inf, Inf, Inf), lambda.initial = NULL, c.code = TRUE, na.replace = rep(NA, 5) )
 }
 \arguments{
   \item{y}{
@@ -47,18 +47,16 @@ logical, TRUE (default) or FALSE. TRUE is faster since it makes use of compiled 
 numeric five-dimensional vector. Sometimes estimation can result in NA values which is fatal for simulations. One way of avoiding this is to replace NAs with user-provided values.
 }
 }
-\details{
-}
+\details{Empty}
+
 \value{
 Numeric value, the value of the log-likelihood at the provided parameter values and given the data
 }
-\references{
-}
-\author{
-Genaro Sucarrat, http://www.sucarrat.net/
-}
-\note{
-}
+\references{Harvey, A. and Chakravarty, T (2008), 'Beta-t-(E)GARCH', Cambridge Working Papers in Economics 0840, Faculty of Economics, University of Cambridge.}
+
+\author{Genaro Sucarrat, http://www.sucarrat.net/}
+
+\note{Empty}
 
 \seealso{
 tegarch.recursion
@@ -73,4 +71,4 @@ tegarch.logl(x, delta=0.01, phi1=0.9, kappa1=0.1, kappa1star=0.05, df=10)
 
 }
 
-\keyword{}
+\keyword{Statistical Models}

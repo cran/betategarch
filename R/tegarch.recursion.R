@@ -37,5 +37,4 @@ if(verbose){
 }else{ result <- lambda1 }
 
 return(result)
-} #end tegarch.recursion
-
+}

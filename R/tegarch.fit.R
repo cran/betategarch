@@ -4,4 +4,3 @@ function(y, par, lambda.initial=NULL, c.code=TRUE){
   kappa1star=par[4], df=par[5], verbose=TRUE, lambda.initial=lambda.initial,
   c.code=c.code)
 }
-

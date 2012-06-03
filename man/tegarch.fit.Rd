@@ -24,19 +24,16 @@ initial value of the recursion for lambda or log-volatility. Default: delta/(1-p
 logical, TRUE (default) or FALSE. TRUE is faster since it makes use of compiled C-code
 }
 }
-\details{
+\details{Empty}
 
-}
 \value{
 A five-column matrix with y and the fitted values of sigma, lambda, u and epsilon.
 }
-\references{
-}
-\author{
-Genaro Sucarrat, http://www.sucarrat.net/
-}
-\note{
-}
+\references{Harvey, A. and Chakravarty, T (2008), 'Beta-t-(E)GARCH', Cambridge Working Papers in Economics 0840, Faculty of Economics, University of Cambridge.}
+
+\author{Genaro Sucarrat, http://www.sucarrat.net/}
+
+\note{Empty}
 
 \seealso{
 tegarch.recursion
@@ -57,4 +54,4 @@ plot(fit[,2])
 
 }
 
-\keyword{}
+\keyword{Statistical Models}
