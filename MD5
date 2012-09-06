@@ -1,12 +1,12 @@
-07593ea6bbd20fed83774acae1c75778 *DESCRIPTION
+6826b60eb9bd22fd9af69b757daef3b5 *DESCRIPTION
 dd16a3510628211d92a813cc29b9c2e9 *NAMESPACE
-59f7c79f934d1c4dfa4442ca4d958a02 *R/betategarch-internal.R
+11dd784e1e311fdad9cfb693b2d775ef *R/betategarch-internal.R
 0d5e17591c465ff08e606aa8316ed6da *R/tegarch.est.R
 59d86ef34172732d76ab9b19129a5df9 *R/tegarch.fit.R
 8abc2d8a476de76f884106de6873119e *R/tegarch.logl.R
 84e6457709907cba5a158ac17bf77345 *R/tegarch.recursion.R
 9d31662c927143ab1bb4ea1c0a8e4cc1 *R/tegarch.sim.R
-9863ed15ec87c4d3bdfe2d4210e3b7e7 *man/betategarch-package.Rd
+8de87622a6ff600d12afba20b4b2a83b *man/betategarch-package.Rd
 29f322302e2fcced36d7c19770b76e94 *man/tegarch.est.Rd
 f343f32fbfcc569596c299ed90f9b8d1 *man/tegarch.fit.Rd
 66ebdf40327758bc734ed5c25c733cbc *man/tegarch.logl.Rd
