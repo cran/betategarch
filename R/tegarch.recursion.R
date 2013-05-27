@@ -1,40 +1,59 @@
 tegarch.recursion <-
-function(y, delta=0.01, phi1=0.95, kappa1=0.05,
-  kappa1star=0, df=10, lambda.initial=NULL, c.code=TRUE, verbose=FALSE)
+function(y, omega=0.1, phi1=0.4,
+  kappa1=0.2, kappastar=0.1, df=10, skew=0.6,
+  lambda.initial=NULL, c.code=TRUE, verbose=FALSE, aux=NULL)
 {
-y2 <- y^2
-kappa1starsignnegy <- kappa1star*sign(-y)
-dfpluss1y2 <- (df+1)*y2
-iN <- length(y)
-u <- rep(0,iN)
-lambda1 <- rep(0,iN)
+if(is.null(aux)){
+  aux <- NULL
+  aux$iN <- length(y)
+  aux$signnegy <- sign(-y)
+  aux$u <- rep(0,aux$iN)
+}
+dfpluss1 <- (df+1)
+u <- aux$u
+mueps <- st.mean(df=df, skew=skew)
+lambda <- u
+lambdadagg <- u
 if(is.null(lambda.initial)){
-  lambda1[1] <- if(abs(phi1)==1){ 0 }else{ delta/(1-phi1) }
-}else{ lambda1[1] <- lambda.initial }
+  lambda[1] <- omega
+}else{
+  lambda[1] <- lambda.initial[1]
+  lambdadagg[1] <- lambda.initial[2]
+}
 
 if(c.code){
-  tmp <- .tegarch.recursion(as.integer(iN), as.numeric(delta),
-    as.numeric(phi1), as.numeric(kappa1), as.numeric(df), as.numeric(y2),
-    as.numeric(dfpluss1y2), as.numeric(kappa1starsignnegy),
-    as.numeric(lambda1), as.numeric(u))
+  signarg <- u
+  skewterm <- u
+  tmp <- .tegarch.recursion(as.integer(aux$iN), as.numeric(omega),
+    as.numeric(phi1), as.numeric(kappa1), as.numeric(kappastar),
+    as.numeric(df), as.numeric(skew^2), as.numeric(dfpluss1),
+    as.numeric(mueps), as.numeric(y), as.numeric(aux$signnegy),
+    as.numeric(signarg), as.numeric(skewterm), as.numeric(lambda),
+    as.numeric(lambdadagg), as.numeric(u))
   u <- tmp$u
-  u[iN] <- NA
-  lambda1 <- tmp$lambda1
+  lambda <- tmp$lambda
+  lambdadagg <- tmp$lambdadagg
 }else{
+  y2 <- y^2
   fn <- function(i){
-    u[i] <<- dfpluss1y2[i]/(df*exp(2*lambda1[i]) + y2[i]) - 1
-    lambda1[i+1] <<- delta + phi1*lambda1[i] + kappa1*u[i] + kappa1starsignnegy[i]*(u[i]+1)
+    u[i] <<- dfpluss1*(y2[i]+y[i]*mueps*exp(lambda[i]))/(df*exp(2*lambda[i]) * skew^(2*sign( y[i]+mueps*exp(lambda[i]) )) + (y[i]+mueps*exp(lambda[i]))^2) - 1
+    lambdadagg[i+1] <<- phi1*lambdadagg[i] + kappa1*u[i] + kappastar*aux$signnegy[i]*(u[i]+1)
+    lambda[i+1] <<- omega + lambdadagg[i+1]
   }
-  indx <- 1:I(iN-1)
+  indx <- 1:I(aux$iN-1)
   tmp <- sapply(indx,fn)
 }
 
 #output:
 if(verbose){
-  sigma <- exp(lambda1)
+  u[aux$iN] <- NA
+  sigma <- exp(lambda)
   epsilon <- y/sigma
-  result <- cbind(y,sigma,lambda1,u,epsilon)
-}else{ result <- lambda1 }
+  sdepsilon <- sd(epsilon)
+  stdev <- sigma*sdepsilon
+  residstd <- epsilon/sdepsilon
+  result <- cbind(y,sigma,stdev,lambda,lambdadagg,u,epsilon,residstd)
+}else{ result <- lambda }
 
 return(result)
 }

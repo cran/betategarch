@@ -1,23 +1,26 @@
-\name{tegarch.sim}
-\alias{tegarch.sim}
+\name{tegarch.sim2}
+\alias{tegarch.sim2}
 
 \title{
-Simulate from a first order one-component Beta-skew-t-EGARCH model
+Simulate from a first order two-component Beta-skew-t-EGARCH model
 }
 \description{
-Simulate the y series (typically understood as a financial return or the error in a regression) from a first order one-component Beta-skew-t-EGARCH model. Optionally, the sigma, lambda, lambdadagger, u and epsilon are also returned.
+Simulate the y series (typically understood as a financial return or the error in a regression) from a 1st. order 2 component Beta-skew-t-EGARCH model. Optionally, the sigma, lambda, lambdadagger, u and epsilon are also returned.
 }
 
 \usage{
-tegarch.sim(n, omega = 0, phi1 = 0.95, kappa1 = 0.05, kappastar = 0, df = 10,
-  skew = 1, lambda.initial = NULL, verbose = FALSE)
+tegarch.sim2(n, omega = 0, phi1 = 0.95, phi2 = 0.9, kappa1 = 0.001,
+  kappa2 = 0.01, kappastar = 0.005, df = 10, skew = 0.98,
+  lambda.initial = NULL, verbose = FALSE)
 }
 
 \arguments{
   \item{n}{integer, length of y (i.e. no of observations)}
   \item{omega}{numeric, the value of omega}
   \item{phi1}{numeric, the value of phi1}
+  \item{phi2}{numeric, the value of phi2}
   \item{kappa1}{numeric, the value of kappa1}
+  \item{kappa2}{numeric, the value of kappa2}
   \item{kappastar}{numeric, the value of kappastar}
   \item{df}{numeric, the value of df (degrees of freedom)}
   \item{skew}{numeric, the value of skew (skewness parameter}
@@ -47,13 +50,14 @@ Harvey and Sucarrat (2012), 'EGARCH models with fat tails, skewness and leverage
 \examples{
 ##simulate series with 500 observations:
 set.seed(123)
-y <- tegarch.sim(500, omega=0.01, phi1=0.9, kappa1=0.1, kappastar=0.05, df=10, skew=0.8)
+y <- tegarch.sim2(500, omega=0.01, phi1=0.95, phi2=0.9, kappa1=0.01, kappa2=0.05,
+  kappastar=0.03, df=10, skew=0.8)
 
 ##simulate the same series, but with more output (volatility, log-volatility or
-##lambda, lambdadagger, u and epsilon)
+##lambda, lambda1dagger, lambda2dagger, u and epsilon)
 set.seed(123)
-y <- tegarch.sim(500, omega=0.01, phi1=0.9, kappa1=0.1, kappastar=0.05, df=10, skew=0.8,
-  verbose=TRUE)
+y <- tegarch.sim2(500, omega=0.01, phi1=0.95, phi2=0.9, kappa1=0.01, kappa2=0.05,
+  kappastar=0.03, df=10, skew=0.8, verbose=TRUE)
 
 }
 

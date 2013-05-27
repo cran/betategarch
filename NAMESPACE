@@ -1,3 +1,2 @@
 useDynLib(betategarch)
-
-export("tegarch.sim", "tegarch.recursion", "tegarch.logl", "tegarch.est", "tegarch.fit", ".tegarch.recursion")
+export("rst", "dst", "st.mean", "tegarch.sim", "tegarch.sim2", "tegarch.recursion", "tegarch.recursion2", "tegarch.logl", "tegarch.logl2", "tegarch.est", "tegarch.fit", ".tegarch.recursion", ".tegarch.recursion2")

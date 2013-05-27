@@ -1,38 +1,34 @@
 tegarch.logl <-
-function(y, delta=0, phi1=0.8, kappa1=0.1,
-  kappa1star=0.01, df=10, lower=c(-Inf,-0.999999999,-Inf,-Inf,2.1),
-  upper=c(Inf,0.999999999,Inf,Inf,Inf), lambda.initial=NULL, c.code=TRUE,
-  na.replace=rep(NA,5))
+function(y, pars, lower=-Inf, upper=Inf,
+  lambda.initial=NULL, logl.penalty=-1e+100, c.code=TRUE, aux=NULL)
 {
-if(is.na(delta)) delta <- na.replace[1]
-if(delta <= lower[1]) delta <- lower[1]
-if(delta >= upper[1]) delta <- upper[1]
-if(is.na(phi1)) phi1 <- na.replace[2]
-if(phi1 <= lower[2]) phi1 <- lower[2]
-if(phi1 >= upper[2]) phi1 <- upper[2]
-if(is.na(kappa1)) kappa1 <- na.replace[3]
-if(kappa1 <= lower[3]) kappa1 <- lower[3]
-if(kappa1 >= upper[3]) kappa1 <- upper[3]
-if(is.na(kappa1star)) kappa1star <- na.replace[4]
-if(kappa1star <= lower[4]) kappa1star <- lower[4]
-if(kappa1star >= upper[4]) kappa1star <- upper[4]
-if(is.na(df)) df <- na.replace[5]
-if(df <= lower[5]) df <- lower[5]
-if(df >= upper[5]) df <- upper[5]
+if( any(is.na(pars)) || any(pars<=aux$lower) || any(pars>=aux$upper) ){
+  chk.conds <- FALSE
+}else{
+  chk.conds <- TRUE
+}
+if(!aux$skew){ pars <- c(pars,1) }
+if(!aux$asym){ pars <- c(pars[1:3],0,pars[4:5]) }
 
-lambda1 <- tegarch.recursion(y, delta=delta, phi1=phi1, kappa1=kappa1,
-  kappa1star=kappa1star, df=df, lambda.initial=lambda.initial,
-  c.code=c.code)
+if(chk.conds){
+  lambda <- tegarch.recursion(y, omega=pars[1], phi1=pars[2],
+    kappa1=pars[3], kappastar=pars[4], df=pars[5],
+    skew=pars[6], lambda.initial=lambda.initial, c.code=c.code,
+    verbose=FALSE, aux=aux)
 
-iN <- length(y)
-y2 <- y^2
-denom.term <- df*exp(2*lambda1)
+  term1 <- aux$iN*( log(2)-log(pars[6]+1/pars[6])+lgamma((pars[5]+1)/2)-lgamma(pars[5]/2)-log(pi*pars[5])/2 )
 
-const1 <- lgamma((df+1)/2) - lgamma(df/2)  - log(pi*df)/2
-term1 <- lambda1
-term2 <- (df+1)*log(1 + (y2/denom.term))/2
+  term2 <- sum(lambda)
 
-logl <- iN*const1 - sum(term1) - sum(term2)
-if(is.na(logl) || abs(logl) == Inf) logl <- -10e+100
+  yterm <- y + st.mean(df=pars[5], skew=pars[6])*exp(lambda)
+  num.term <- yterm^2
+  denom.term <- pars[6]^(2*sign(yterm))*pars[5]*exp(2*lambda)
+  term3 <- sum( (pars[5]+1)*log(1 + num.term/denom.term)/2 )
+
+  logl <- term1 - term2 - term3
+
+  if(is.nan(logl) || is.na(logl) || abs(logl) == Inf) logl <- logl.penalty
+}else{ logl <- logl.penalty }
+
 return(logl)
 }

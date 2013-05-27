@@ -1,17 +1,18 @@
-\name{tegarch.logl}
-\alias{tegarch.logl}
+\name{tegarch.logl2}
+\alias{tegarch.logl2}
 
 \title{
-Log-likelihood function of the one-component Beta-skew-t-EGARCH model
+Log-likelihood function of the two-component Beta-skew-t-EGARCH model
 }
 \description{
 Provides the value of the log-likelihood. Auxiliary function used by tegarch.est in the estimation of the Beta-skew-t-EGARCH model. Not intended for the average user.
 }
 
 \usage{
-tegarch.logl(y, pars, lower = -Inf, upper = Inf, lambda.initial = NULL,
-  logl.penalty = -1e+100, c.code = TRUE, aux = NULL)
+tegarch.logl2(y, pars, lower = -Inf, upper = Inf, lambda.initial = NULL,
+  logl.penalty = -1e+101, c.code = TRUE, aux = NULL)
 }
+
 \arguments{
   \item{y}{
 numeric vector, typically a financial return series.
@@ -32,7 +33,7 @@ NULL (default) or initial value(s) of the recursion for lambda. If NULL, then th
 NULL (default) or a numeric value. If NULL, then the values are chosen automatically.
 }
   \item{c.code}{
-logical, TRUE (default) or FALSE. TRUE is faster since it makes use of compiled C-code
+logical, TRUE (default) or FALSE. TRUE is faster since it makes use of compiled C-code.
 }
   \item{aux}{
 NULL (default) or a list, se code.
@@ -53,7 +54,7 @@ Harvey and Sucarrat (2012), 'EGARCH models with fat tails, skewness and leverage
 \note{Empty}
 
 \seealso{
-tegarch.recursion, tegarch.logl2, tegarch.est
+tegarch.recursion, tegarch.logl, tegarch.est
 }
 
 \keyword{Statistical Models}
