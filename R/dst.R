@@ -1,4 +1,4 @@
-dst <-
+dST <-
 function(y, df=10, sd=1, skew=1, log=FALSE)
 {
 if(log){

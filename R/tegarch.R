@@ -1,15 +1,14 @@
-tegarch.est <-
-function(y, asym=TRUE, skew=TRUE,
-  components=1, initial.values=NULL, lower=NULL, upper=NULL,
-  compute.hessian=FALSE, lambda.initial=NULL, c.code=TRUE,
-  logl.penalty=-1e+100, verbose=TRUE, aux=NULL, ...)
+tegarch <-
+function(y, asym=TRUE, skew=TRUE, components=1,
+  initial.values=NULL, lower=NULL, upper=NULL, hessian=TRUE,
+  lambda.initial=NULL, c.code=TRUE, logl.penalty=NULL,
+  aux=NULL, ...)
 {
-#if(verbose){
-#  y <- as.zoo(y)
-#  y <- na.trim(y)
-#  y.index <- index(y)
-#  y <- coredata(y)
-#}
+y <- as.zoo(y)
+y <- na.trim(y)
+y.index <- index(y)
+y <- coredata(y)
+
 aux$asym <- asym
 aux$skew <- skew
 aux$iN <- length(y)
@@ -38,11 +37,11 @@ if(components==1){
     upper <- upper[-4]
   }
   if(is.null(logl.penalty)){
-    logl.penalty <- tegarch.logl(y, initial.values,
+    logl.penalty <- tegarchLogl(y, initial.values,
       lower=lower, upper=upper, lambda.initial=lambda.initial,
       logl.penalty=-1e+100, c.code=c.code, aux=aux)
   }
-  objective.f <- function(pars, x=y){f <- -tegarch.logl(x,
+  objective.f <- function(pars, x=y){f <- -tegarchLogl(x,
     pars, lower=lower, upper=upper,
     lambda.initial=lambda.initial, logl.penalty=logl.penalty,
     c.code=c.code, aux=aux); f}
@@ -68,11 +67,11 @@ if(components==1){
     asym=TRUE
   }
   if(is.null(logl.penalty)){
-    logl.penalty <- tegarch.logl2(y, initial.values,
+    logl.penalty <- tegarchLogl2(y, initial.values,
       lower=lower, upper=upper, lambda.initial=lambda.initial,
       logl.penalty=-1e+100, c.code=c.code, aux=aux)
   }
-  objective.f <- function(pars, x=y){f <- -tegarch.logl2(x,
+  objective.f <- function(pars, x=y){f <- -tegarchLogl2(x,
     pars, lower=lower, upper=upper, lambda.initial=lambda.initial,
     logl.penalty=logl.penalty, c.code=c.code, aux=aux); f}
 }
@@ -83,42 +82,46 @@ if(components==1){
 est <- nlminb(initial.values, objective.f, lower=lower,
   upper=upper, x=y, ...)
 est$objective <- -est$objective
+sic <- -2*est$objective/aux$iN + length(est$par)*log(aux$iN)/aux$iN
+est <- c(list(sic=sic), est)
 
 #compute Hessian:
-if(compute.hessian){
-  hessian.numerical <- -optimHess(est$par, objective.f)
-  est <- c(list(hessian.numerical=hessian.numerical), est)
+if(hessian){
+  hessian.numeric <- -optimHess(est$par, objective.f)
+  est <- c(list(hessian=hessian.numeric), est)
 }
 
 #type of model:
 model <- c(components, asym, skew)
 names(model) <- c("components", "asym", "skew")
-est <- c(list(model=model), est)
+est <- c(list(y=zoo(y, order.by=y.index), date=date(),
+  initial.values=initial.values, lower=lower, upper=upper,
+  lambda.initial=lambda.initial, model=model), est)
 
-if(verbose){
-  if(components==1){
-    parnames <- c("omega", "phi1", "kappa1", "kappastar", "df", "skew")
-    if(!aux$skew){ parnames <- parnames[-6] }
-    if(!aux$asym){ parnames <- parnames[-4] }
-  }else{
-    parnames <- c("omega", "phi1", "phi2", "kappa1", "kappa2",
-      "kappastar", "df", "skew")
-    if(!aux$skew){ parnames <- parnames[-8] }
-    if(!aux$asym){
-      est$NOTE <- "2 comp spec without leverage not available"
-    }
+#add names:
+if(components==1){
+  parnames <- c("omega", "phi1", "kappa1", "kappastar", "df", "skew")
+  if(!aux$skew){ parnames <- parnames[-6] }
+  if(!aux$asym){ parnames <- parnames[-4] }
+}else{
+  parnames <- c("omega", "phi1", "phi2", "kappa1", "kappa2",
+    "kappastar", "df", "skew")
+  if(!aux$skew){ parnames <- parnames[-8] }
+  if(!aux$asym){
+    est$NOTE <- "2 comp spec without leverage/asymmetry not available"
   }
-  names(est$par) <- parnames
-  if(compute.hessian){
-    colnames(est$hessian.numerical) <- parnames
-    rownames(est$hessian.numerical) <- parnames
-  }
-  names(initial.values) <- parnames
-  names(lower) <- parnames
-  names(upper) <- parnames
-  est <- c(list(date=date(), initial.values=initial.values,
-    lower=lower, upper=upper), est)
 }
+names(est$par) <- parnames
+if(hessian){
+  colnames(est$hessian) <- parnames
+  rownames(est$hessian) <- parnames
+}
+names(est$initial.values) <- parnames
+names(est$lower) <- parnames
+names(est$upper) <- parnames
 
+#out:
+class(est) <- "tegarch"
+#if(print.result){print.tegarch(est)}
 return(est)
 }

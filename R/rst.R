@@ -1,7 +1,7 @@
-rst <-
-function(n, df=10, sd=1, skew=1)
+rST <-
+function(n, df=10, skew=1)
 {
-zstar <- rt(n=n,df=df)*sd
+zstar <- rt(n=n,df=df)
 weight <- skew/(skew + 1/skew)
 z <- runif(n, -weight, 1 - weight)
 signz <- sign(z)

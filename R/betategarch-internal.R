@@ -1,4 +1,4 @@
-.tegarch.recursion <- function (iN, omega, phi1, kappa1, kappastar, df, skew2, dfpluss1, 
+.tegarchRecursion <- function (iN, omega, phi1, kappa1, kappastar, df, skew2, dfpluss1, 
     mueps, y, signnegy, signarg, skewterm, lambda, lambdadagg, 
     u) 
 .C("tegarchrecursion", iN = as.integer(iN), omega = as.double(omega), phi1 = as.double(phi1), 
@@ -9,7 +9,7 @@
     lambda = as.double(lambda), lambdadagg = as.double(lambdadagg), 
     u = as.double(u), PACKAGE = "betategarch")
 
-.tegarch.recursion2 <- function (iN, omega, phi1, phi2, kappa1, kappa2, kappastar, df, 
+.tegarchRecursion2 <- function (iN, omega, phi1, phi2, kappa1, kappa2, kappastar, df, 
     skew2, dfpluss1, mueps, y, y2, signnegy, signarg, skewterm, 
     lambda, lambda1dagg, lambda2dagg, u) 
 .C("tegarchrecursion2", iN = as.integer(iN), omega = as.double(omega), phi1 = as.double(phi1), 

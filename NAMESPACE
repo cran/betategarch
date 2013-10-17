@@ -1,2 +1,12 @@
 useDynLib(betategarch)
-export("rst", "dst", "st.mean", "tegarch.sim", "tegarch.sim2", "tegarch.recursion", "tegarch.recursion2", "tegarch.logl", "tegarch.logl2", "tegarch.est", "tegarch.fit", ".tegarch.recursion", ".tegarch.recursion2")
+import(zoo)
+export("rST", "dST", "STmean", "STvar", "STskewness", "STkurtosis", "tegarchSim", "tegarch", "coef.tegarch", "fitted.tegarch", "logLik.tegarch", "predict.tegarch", "print.tegarch", "residuals.tegarch", "summary.tegarch", "vcov.tegarch")
+S3method("coef", "tegarch")
+S3method("fitted", "tegarch")
+S3method("logLik", "tegarch")
+S3method("predict", "tegarch")
+S3method("print", "tegarch")
+S3method("residuals", "tegarch")
+S3method("summary", "tegarch")
+S3method("vcov", "tegarch")
+

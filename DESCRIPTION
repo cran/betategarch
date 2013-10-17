@@ -1,15 +1,16 @@
 Package: betategarch
 Type: Package
-Title: Estimation and simulation of first-order Beta-t-EGARCH models
-Version: 2.0
-Date: 2013-05-27
+Title: Simulation, estimation and forecasting of Beta-Skew-t-EGARCH
+        models
+Version: 3.0
+Depends: R (>= 3.0.0), zoo
+Date: 2013-10-17
 Author: Genaro Sucarrat
 Maintainer: Genaro Sucarrat <genaro.sucarrat@bi.no>
 URL: http://www.sucarrat.net/
-Description: Estimation and simulation of first-order Beta-t-EGARCH
-        models (one-component, two-component, skewed versions).
+Description: Simulation, estimation and forecasting of first-order Beta-Skew-t-EGARCH models with leverage (one-component, two-component, skewed versions).
 License: GPL-2
-Packaged: 2013-05-27 20:45:16 UTC; admin
+Packaged: 2013-10-17 15:08:01 UTC; admin
 NeedsCompilation: yes
 Repository: CRAN
-Date/Publication: 2013-05-27 22:40:23
+Date/Publication: 2013-10-17 17:48:37

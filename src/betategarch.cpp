@@ -37,6 +37,3 @@ void tegarchrecursion2 ( int * iN, double * omega, double * phi1, double * phi2,
   }
 
 }
-
-
-

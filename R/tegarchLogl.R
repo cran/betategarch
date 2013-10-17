@@ -1,4 +1,4 @@
-tegarch.logl <-
+tegarchLogl <-
 function(y, pars, lower=-Inf, upper=Inf,
   lambda.initial=NULL, logl.penalty=-1e+100, c.code=TRUE, aux=NULL)
 {
@@ -11,7 +11,7 @@ if(!aux$skew){ pars <- c(pars,1) }
 if(!aux$asym){ pars <- c(pars[1:3],0,pars[4:5]) }
 
 if(chk.conds){
-  lambda <- tegarch.recursion(y, omega=pars[1], phi1=pars[2],
+  lambda <- tegarchRecursion(y, omega=pars[1], phi1=pars[2],
     kappa1=pars[3], kappastar=pars[4], df=pars[5],
     skew=pars[6], lambda.initial=lambda.initial, c.code=c.code,
     verbose=FALSE, aux=aux)
@@ -20,7 +20,7 @@ if(chk.conds){
 
   term2 <- sum(lambda)
 
-  yterm <- y + st.mean(df=pars[5], skew=pars[6])*exp(lambda)
+  yterm <- y + STmean(pars[5], skew=pars[6])*exp(lambda)
   num.term <- yterm^2
   denom.term <- pars[6]^(2*sign(yterm))*pars[5]*exp(2*lambda)
   term3 <- sum( (pars[5]+1)*log(1 + num.term/denom.term)/2 )

@@ -1,4 +1,4 @@
-tegarch.recursion <-
+tegarchRecursion <-
 function(y, omega=0.1, phi1=0.4,
   kappa1=0.2, kappastar=0.1, df=10, skew=0.6,
   lambda.initial=NULL, c.code=TRUE, verbose=FALSE, aux=NULL)
@@ -11,7 +11,7 @@ if(is.null(aux)){
 }
 dfpluss1 <- (df+1)
 u <- aux$u
-mueps <- st.mean(df=df, skew=skew)
+mueps <- STmean(df, skew=skew)
 lambda <- u
 lambdadagg <- u
 if(is.null(lambda.initial)){
@@ -24,7 +24,7 @@ if(is.null(lambda.initial)){
 if(c.code){
   signarg <- u
   skewterm <- u
-  tmp <- .tegarch.recursion(as.integer(aux$iN), as.numeric(omega),
+  tmp <- .tegarchRecursion(as.integer(aux$iN), as.numeric(omega),
     as.numeric(phi1), as.numeric(kappa1), as.numeric(kappastar),
     as.numeric(df), as.numeric(skew^2), as.numeric(dfpluss1),
     as.numeric(mueps), as.numeric(y), as.numeric(aux$signnegy),
@@ -49,7 +49,8 @@ if(verbose){
   u[aux$iN] <- NA
   sigma <- exp(lambda)
   epsilon <- y/sigma
-  sdepsilon <- sd(epsilon)
+#  sdepsilon <- sd(epsilon)
+  sdepsilon <- sqrt(STvar(df, skew=skew))
   stdev <- sigma*sdepsilon
   residstd <- epsilon/sdepsilon
   result <- cbind(y,sigma,stdev,lambda,lambdadagg,u,epsilon,residstd)
