@@ -82,8 +82,8 @@ if(components==1){
 est <- nlminb(initial.values, objective.f, lower=lower,
   upper=upper, x=y, ...)
 est$objective <- -est$objective
-sic <- -2*est$objective/aux$iN + length(est$par)*log(aux$iN)/aux$iN
-est <- c(list(sic=sic), est)
+#sic <- -2*est$objective/aux$iN + length(est$par)*log(aux$iN)/aux$iN
+#est <- c(list(sic=sic), est)
 
 #compute Hessian:
 if(hessian){
@@ -122,6 +122,5 @@ names(est$upper) <- parnames
 
 #out:
 class(est) <- "tegarch"
-#if(print.result){print.tegarch(est)}
 return(est)
 }

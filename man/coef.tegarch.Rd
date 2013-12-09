@@ -45,7 +45,7 @@ Harvey and Sucarrat (2013), 'EGARCH models with fat tails, skewness and leverage
 \author{Genaro Sucarrat, \url{http://www.sucarrat.net/}}
 \seealso{ \code{\link{tegarch}}, \code{\link{coef}}, \code{\link{fitted}}, \code{\link{logLik}}, \code{\link{predict}}, \code{\link{predict.tegarch}}, \code{\link{print}}, \code{\link{summary}}, \code{\link{vcov}} }
 \examples{
-#simulate 1000 observations from model with default parameter values:
+#simulate 500 observations from model with default parameter values:
 set.seed(123)
 y <- tegarchSim(500)
 

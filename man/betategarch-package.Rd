@@ -5,7 +5,7 @@
 \title{Simulation, estimation and forecasting of Beta-Skew-t-EGARCH models}
 
 \description{
-This package provides facilities for the simulation, estimation and forecasting of first order Beta-Skew-t-EGARCH models with leverage and skewed student t conditional errors, see Harvey and Sucarrat (2013).\cr
+This package provides facilities for the simulation, estimation and forecasting of first order Beta-Skew-t-EGARCH models with leverage (one-component and two-component versions), see Harvey and Sucarrat (2013).\cr
 
 Let y[t] denote a financial return at time t equal to
 
@@ -48,7 +48,7 @@ Harvey and Sucarrat (2013), 'EGARCH models with fat tails, skewness and leverage
 
 }
 \examples{
-#simulate 1000 observations from model with default parameter values:
+#simulate 500 observations from model with default parameter values:
 set.seed(123)
 y <- tegarchSim(500)
 

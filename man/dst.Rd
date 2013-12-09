@@ -8,7 +8,7 @@
 
 \title{The skewed t distribution}
 \description{
-Density, random number generation, mean, variance, skewness and kurtosis functions for the uncentred skewed t distribution. The skewing method is that of Fernandez and Steel (1998), 
+Density, random number generation, mean, variance, skewness and kurtosis functions for the uncentred skewed t distribution. The skewing method is that of Fernandez and Steel (1998).
 }
 \usage{
 dST(y, df = 10, sd = 1, skew = 1, log = FALSE)

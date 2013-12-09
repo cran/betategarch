@@ -21,7 +21,7 @@ tegarch(y, asym = TRUE, skew = TRUE, components = 1, initial.values = NULL,
   \item{initial.values}{NULL (default) or a vector with the initial values. If NULL, then the values are automatically chosen according to model (with or without skewness, 1 or 2 components, etc.)}
   \item{lower}{NULL (default) or a vector with the lower bounds of the parameter space. If NULL, then the values are automatically chosen}
   \item{upper}{NULL (default) or a vector with the upper bounds of the parameter space. If NULL, then the values are automatically chosen}
-  \item{hessian}{logical. If TRUE (default) then the Hessian is computed numerically via the optimHess function}
+  \item{hessian}{logical. If TRUE (default) then the Hessian is computed numerically via the optimHess function. Setting hessian=FALSE speeds up estimation, which might be particularly useful in simulation. However, it also slows down the extraction of the variance-covariance matrix by means of the vcov method.}
   \item{lambda.initial}{NULL (default) or a vector with the initial value(s) of the recursion for lambda and lambdadagger. If NULL then the values are chosen automatically}
   \item{c.code}{logical. TRUE (default) is faster since it makes use of compiled C-code}
   \item{logl.penalty}{NULL (default) or a numeric value. If NULL then the log-likelihood value associated with the initial values is used. Sometimes estimation can result in NA and/or +/-Inf values, which are fatal for simulations. The value logl.penalty is the value returned by the log-likelihood function in the presence of NA or +/-Inf values}
