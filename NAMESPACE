@@ -1,6 +1,6 @@
 useDynLib(betategarch)
 import(zoo)
-export("rST", "dST", "STmean", "STvar", "STskewness", "STkurtosis", "tegarchSim", "tegarch")
+export("rST", "dST", "STmean", "STvar", "STskewness", "STkurtosis", "tegarchSim", "tegarch", "coef.tegarch", "fitted.tegarch", "logLik.tegarch", "predict.tegarch", "print.tegarch", "residuals.tegarch", "summary.tegarch", "vcov.tegarch")
 S3method("coef", "tegarch")
 S3method("fitted", "tegarch")
 S3method("logLik", "tegarch")

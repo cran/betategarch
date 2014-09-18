@@ -1,5 +1,6 @@
-812a74dd620d33d7271733d10e127d4d *DESCRIPTION
-bff7e2cada2185e6f9b2e30ba23d475a *NAMESPACE
+9fc6bbc69daf509629e7ae720002289b *DESCRIPTION
+7f73130362ed8471ec82912e2810a904 *NAMESPACE
+e153eb45d8fbece2e5186e7c26b6b486 *NEWS
 c5efe0f70ff5a8da510b0d27f2afe4a9 *R/STkurtosis.R
 578da141be8e2aeb7a930ef0dc1aeb53 *R/STmean.R
 f01341b09e8302861543d11fe1a0980e *R/STskewness.R
@@ -14,7 +15,7 @@ b37e4277f87afd82f8f4fa8d9d38fee0 *R/print.tegarch.R
 b1f67ec2b95773eae0e3285dae98113f *R/rST.R
 f5d0e625b92e7990c35cc0de7dbd8522 *R/residuals.tegarch.R
 4d60be4bee7f682e9bd7eb2a38081b79 *R/summary.tegarch.R
-570cecb28ed8ff1de71e7a70f8eee8b7 *R/tegarch.R
+8cf2d0b615192a70c6f8176eacd83698 *R/tegarch.R
 bdd21c862964e75b409e082a368513b9 *R/tegarchLogl.R
 59c06ce9666aa6f0b22aef8c783a3d45 *R/tegarchLogl2.R
 25cbe1edf7205be829985ac307658f98 *R/tegarchRecursion.R
@@ -24,7 +25,7 @@ cad7c06f9bb50a843d7a1d43e54790d7 *R/tegarchSim.R
 6b61370baa43da4ca9b23173896470d7 *data/nasdaq.rda
 551eb0073f62c19e5b51d6ebb71ad8c5 *demo/00Index
 46e9bbf6cc4112e05bc3d635b104861c *demo/betategarch.R
-7c84c01a4c31c5518114ac56bee9a414 *man/betategarch-package.Rd
+2ca0689a295f37b617c614a54c6e3430 *man/betategarch-package.Rd
 b79705923f1af1398015fa06b56bc1b4 *man/coef.tegarch.Rd
 5b0981352cb7479920b2e41f74f744b8 *man/dST.Rd
 5914f36bbbb478ec67526253cefa40ad *man/nasdaq.Rd

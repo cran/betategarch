@@ -1,0 +1,7 @@
+Changes to version 3.2 (18 September 2014):
+===========================================
+
+- The first argument of the tegarch function, y, is now expected to be either a 1-column matrix or a vector (previously the argument was assumed to be a vector only). This means the indices of xts objects are now handled correctly. In previous versions the incorrect handling of the index resulted in errors when applying the predict method on tegarch objects. Thanks to Serdar Sahetmammedov and John Kalkanis for bringing my attention to the problem with xts objects.
+
+- asym=FALSE in the tegarch function now returns an error if components=2. For identification, asym=TRUE is required when components=2. In previous versions asym was automatically changed to TRUE if the user tried to combine components=2 with asym=FALSE, together with a note in the output.
+

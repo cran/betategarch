@@ -9,6 +9,14 @@ y <- na.trim(y)
 y.index <- index(y)
 y <- coredata(y)
 
+#xts related:
+if(is.matrix(y)){
+  if (NCOL(y) > 1)
+    stop("Dependent variable not a 1-dimensional matrix")
+  y <- y[, 1]
+}
+y <- as.numeric(y)
+
 aux$asym <- asym
 aux$skew <- skew
 aux$iN <- length(y)
@@ -63,9 +71,11 @@ if(components==1){
     lower <- lower[-8]
     upper <- upper[-8]
   }
-  if(!aux$asym){
-    asym=TRUE
-  }
+  if(!aux$asym)
+    stop("For identification, asym=TRUE is required when components=2")
+#  if(!aux$asym){
+#    asym=TRUE
+#  }
   if(is.null(logl.penalty)){
     logl.penalty <- tegarchLogl2(y, initial.values,
       lower=lower, upper=upper, lambda.initial=lambda.initial,
@@ -77,8 +87,6 @@ if(components==1){
 }
 
 #estimate:
-#est <- nlminb(initial.values, objective.f, lower=lower,
-#  upper=upper, x=y)
 est <- nlminb(initial.values, objective.f, lower=lower,
   upper=upper, x=y, ...)
 est$objective <- -est$objective
@@ -107,9 +115,9 @@ if(components==1){
   parnames <- c("omega", "phi1", "phi2", "kappa1", "kappa2",
     "kappastar", "df", "skew")
   if(!aux$skew){ parnames <- parnames[-8] }
-  if(!aux$asym){
-    est$NOTE <- "2 comp spec without leverage/asymmetry not available"
-  }
+#  if(!aux$asym){
+#    est$NOTE <- "2 comp spec without leverage/asymmetry not available"
+#  }
 }
 names(est$par) <- parnames
 if(hessian){

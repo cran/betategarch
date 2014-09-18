@@ -31,8 +31,8 @@ The first component, lambda1dagger, is interpreted as the long-term component, w
 \tabular{ll}{
 Package: \tab betategarch\cr
 Type: \tab Package\cr
-Version: \tab 3.0\cr
-Date: \tab 2013-10-17\cr
+Version: \tab 3.2\cr
+Date: \tab 2014-09-18\cr
 License: \tab GPL-2\cr
 LazyLoad: \tab yes\cr
 }
