@@ -11,10 +11,11 @@
     \item{\code{nasdaqret}}{a numeric vector}
   }
 }
-\details{The data is studied in more detail in Harvey and Sucarrat (2013).}
+\details{The data is studied in more detail in Harvey and Sucarrat (2014), and in Sucarrat (2013).}
 \source{The source of the original raw data is http://yahoo.finance.com/.}
 \references{
-Harvey and Sucarrat (2013), 'EGARCH models with fat tails, skewness and leverage', forthcoming in Computational Statistics and Data Analysis. Working paper version: Cambridge Working Papers in Economics 1236, Faculty of Economics, University of Cambridge.\cr
+Harvey and Sucarrat (2014),	'EGARCH models with fat tails, skewness and leverage'. Computational Statistics and Data Analysis 76, pp. 320-338.\cr
+Sucarrat (2013), 'betategarch: Simulation, Estimation and Forecasting of First-Order Beta-Skew-t-EGARCH models'. The R Journal (Volume 5/2), pp. 137-147.\cr
 }
 \examples{
 data(nasdaq) #load data into workspace

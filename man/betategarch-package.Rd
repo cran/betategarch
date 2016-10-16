@@ -5,7 +5,7 @@
 \title{Simulation, estimation and forecasting of Beta-Skew-t-EGARCH models}
 
 \description{
-This package provides facilities for the simulation, estimation and forecasting of first order Beta-Skew-t-EGARCH models with leverage (one-component and two-component versions), see Harvey and Sucarrat (2013).\cr
+This package provides facilities for the simulation, estimation and forecasting of first order Beta-Skew-t-EGARCH models with leverage (one-component and two-component versions), see Harvey and Sucarrat (2014), and Sucarrat (2013).\cr
 
 Let y[t] denote a financial return at time t equal to
 
@@ -25,14 +25,15 @@ lambda1dagger[t] = phi1*lambdadagger[t-1] + kappa1*u[t-1],\cr
 lambda2dagger[t] = phi2*lambdadagger[t-1] + kappa2*u[t-1] + kappastar*sign[-y]*(u[t-1]+1).
 
 The first component, lambda1dagger, is interpreted as the long-term component, whereas the second component, lambda2dagger, is interpreted as the short-term component.
+
 }
 
 \details{
 \tabular{ll}{
 Package: \tab betategarch\cr
 Type: \tab Package\cr
-Version: \tab 3.2\cr
-Date: \tab 2014-09-18\cr
+Version: \tab 3.3\cr
+Date: \tab 2016-10-16\cr
 License: \tab GPL-2\cr
 LazyLoad: \tab yes\cr
 }
@@ -44,7 +45,9 @@ The two main functions of the package are \code{\link{tegarchSim}} and \code{\li
 \references{
 Fernandez and Steel (1998), 'On Bayesian Modeling of Fat Tails and Skewness', Journal of the American Statistical Association 93, pp. 359-371.\cr
 
-Harvey and Sucarrat (2013), 'EGARCH models with fat tails, skewness and leverage', forthcoming in Computational Statistics and Data Analysis. Working paper version: Cambridge Working Papers in Economics 1236, Faculty of Economics, University of Cambridge.\cr
+Harvey and Sucarrat (2014),	'EGARCH models with fat tails, skewness and leverage'. Computational Statistics and Data Analysis 76, pp. 320-338.\cr
+
+Sucarrat (2013), 'betategarch: Simulation, Estimation and Forecasting of First-Order Beta-Skew-t-EGARCH models'. The R Journal (Volume 5/2), pp. 137-147.\cr
 
 }
 \examples{
@@ -63,4 +66,5 @@ plot(fitted(mymod))
 
 #plot forecasts of volatility 1-step ahead up to 10-steps ahead:
 plot(predict(mymod, n.ahead=10))
+
 }

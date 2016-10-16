@@ -1,3 +1,9 @@
+Changes to version 3.3 (16 October 2016):
+===========================================
+
+- Minor changes to the syntax of the C-code, on request from the CRAN
+
+
 Changes to version 3.2 (18 September 2014):
 ===========================================
 

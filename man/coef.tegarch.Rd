@@ -40,7 +40,10 @@ Extraction methods for objects of class 'tegarch' (i.e. the result of estimating
 \references{
 Fernandez and Steel (1998), 'On Bayesian Modeling of Fat Tails and Skewness', Journal of the American Statistical Association 93, pp. 359-371.\cr
 
-Harvey and Sucarrat (2013), 'EGARCH models with fat tails, skewness and leverage', forthcoming in Computational Statistics and Data Analysis. Working paper version: Cambridge Working Papers in Economics 1236, Faculty of Economics, University of Cambridge.\cr
+Harvey and Sucarrat (2014),	'EGARCH models with fat tails, skewness and leverage'. Computational Statistics and Data Analysis 76, pp. 320-338.\cr
+
+Sucarrat (2013), 'betategarch: Simulation, Estimation and Forecasting of First-Order Beta-Skew-t-EGARCH models'. The R Journal (Volume 5/2), pp. 137-147.\cr
+
 }
 \author{Genaro Sucarrat, \url{http://www.sucarrat.net/}}
 \seealso{ \code{\link{tegarch}}, \code{\link{coef}}, \code{\link{fitted}}, \code{\link{logLik}}, \code{\link{predict}}, \code{\link{predict.tegarch}}, \code{\link{print}}, \code{\link{summary}}, \code{\link{vcov}} }
